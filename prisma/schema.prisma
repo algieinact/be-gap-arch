@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Analysis {
+  id                String   @id @default(cuid())
+  cacheKey          String   @unique // SHA-256 hash of resume + jd
+  resumeText        String   @db.Text
+  jobDescriptionText String  @db.Text
+  
+  // Analysis Results
+  missingSkills     String[] // Array of skill strings
+  learningSteps     String[] // Array of step descriptions
+  interviewQuestions String[] // Array of questions
+  roadmapMarkdown   String   @db.Text
+  
+  // Metadata
+  createdAt         DateTime @default(now())
+  accessCount       Int      @default(1) // Track cache hits
+  lastAccessedAt    DateTime @default(now())
+  
+  @@index([cacheKey])
+  @@index([createdAt])
+  @@map("analyses")
+}
