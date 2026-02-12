@@ -35,7 +35,7 @@ Complete backend API with features:
 Before starting, make sure you have:
 - **Node.js**: v18 or higher
 - **PostgreSQL**: v14 or higher
-- **Anthropic API Key**: Get it at [console.anthropic.com](https://console.anthropic.com/)
+- **Ai Model API Key**: Gemini/OpenAi/Anthrophic
 
 Check versions:
 ```bash
