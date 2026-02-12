@@ -1,0 +1,14 @@
+node_modules/
+.git/
+.vscode/
+.idea/
+*.log
+.env
+.env.local
+dist/
+uploads/
+test-api.sh
+test-data.json
+setup.sh
+backend.tar.gz
+README.md
